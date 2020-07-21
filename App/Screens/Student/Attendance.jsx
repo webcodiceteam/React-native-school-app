@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, AsyncStorage } from "react-native";
 import HeaderComp from "../Header";
 
-const Principalscreen = ({ navigation }) => {
+const AttendanceStudent = ({ navigation }) => {
   const [name, setName] = useState("");
 
   AsyncStorage.getItem("user").then((data) => {
@@ -20,7 +20,7 @@ const Principalscreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <HeaderComp navigation={navigation} />
-      <Text style={styles.welcome}>Student screen!</Text>
+      <Text style={styles.welcome}>Attendance</Text>
       <Text style={styles.welcome}>
         <Text>Welcome</Text>
         <Text> {name} </Text>
@@ -29,15 +29,15 @@ const Principalscreen = ({ navigation }) => {
         <View style={{ flexDirection: "row", margin: 10 }}>
           <Text
             style={styles.textstyle}
-            onPress={() => navigation.navigate("AttendanceStudent")}
+            onPress={() => navigation.navigate("QR_Scan")}
           >
-            Attendance
+            Scan QR
           </Text>
           <Text
             style={styles.textstyle}
-            onPress={() => navigation.navigate("View_Profile_Student")}
+            onPress={() => navigation.navigate("MyAtendanceStudent")}
           >
-            View Profile
+            My Attendance
           </Text>
         </View>
       </View>
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 });
-export default Principalscreen;
+export default AttendanceStudent;

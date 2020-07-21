@@ -15,6 +15,7 @@ import {
 import { Avatar } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import HeaderComp from "../Header";
+import { ProfileData } from "./Card";
 
 export default function studentprofile({ navigation }) {
   let [student, setStudent] = useState([]);
@@ -24,7 +25,6 @@ export default function studentprofile({ navigation }) {
 
   const logout = () => {
     AsyncStorage.removeItem("user").then(() => alert("success"));
-    // Actions.login();
   };
 
   const getUserData = () => {
@@ -37,7 +37,6 @@ export default function studentprofile({ navigation }) {
           })
           .then((response) => {
             let data = response.data[0];
-            // console.log(response.data);
             setStudent(data);
           })
           .catch(function (error) {
@@ -47,20 +46,6 @@ export default function studentprofile({ navigation }) {
       .catch((err) => console.log(err));
   };
 
-  const ProfileData = (props) => {
-    return (
-      <Card style={styles.cardContrainer}>
-        <CardItem header style={{ height: 0 }}>
-          <Text>{props.Title}</Text>
-        </CardItem>
-        <CardItem>
-          <Body>
-            <H3>{props.data}</H3>
-          </Body>
-        </CardItem>
-      </Card>
-    );
-  };
   return (
     <View style={styles.main}>
       <HeaderComp navigation={navigation} />

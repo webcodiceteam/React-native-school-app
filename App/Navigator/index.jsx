@@ -24,6 +24,8 @@ import View_Teacherlist from "../Screens/Admin/View_Teacher";
 import View_QR from "../Screens/Admin/View_qr";
 import View_Classlist from "../Screens/Admin/View_Class";
 import View_Subject from "../Screens/Admin/View_subject";
+import AttendanceStudent from "../Screens/Student/Attendance";
+import MyAtendanceStudent from "../Screens/Student/MyAtendanceStudent";
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
 export default function App() {
@@ -178,6 +180,20 @@ export default function App() {
           }}
           name="View_Student_QR"
           component={View_Student_QR}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="AttendanceStudent"
+          component={AttendanceStudent}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="MyAtendanceStudent"
+          component={MyAtendanceStudent}
         />
       </Stack.Navigator>
     </NavigationContainer>

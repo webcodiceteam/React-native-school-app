@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button, AsyncStorage } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
+
 export default function qrscan({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [name, setName] = useState("");
+
   AsyncStorage.getItem("user").then((data) => {
-    // let user = data;
     setName(data);
   });
 
@@ -18,12 +19,7 @@ export default function qrscan({ navigation }) {
     })();
   }, []);
 
-  const hidescanner = () => {
-    setScanned(false);
-    navigation.navigate("Student");
-  };
-
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     let getTime = new Date().toLocaleTimeString();
     let getDate = new Date().toLocaleDateString();
@@ -35,8 +31,9 @@ export default function qrscan({ navigation }) {
         name: name,
         scan_date_time: dateAndTime,
       })
-      .then(function (response) {
+      .then((response) => {
         alert(response.data);
+        navigation.navigate("Student");
       })
       .catch(function (error) {
         console.log(error);
@@ -66,11 +63,7 @@ export default function qrscan({ navigation }) {
           <View style={styles.focused} />
           <View style={styles.layerRight} />
         </View>
-        <View style={styles.layerBottom}>
-          <Text onPress={hidescanner} style={styles.textstyle}>
-            Cancel
-          </Text>
-        </View>
+        <View style={styles.layerBottom} />
       </BarCodeScanner>
 
       {scanned && (
@@ -107,11 +100,5 @@ const styles = StyleSheet.create({
   layerBottom: {
     flex: 2,
     backgroundColor: opacity,
-  },
-  textstyle: {
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 24,
-    marginTop: "50%",
   },
 });
