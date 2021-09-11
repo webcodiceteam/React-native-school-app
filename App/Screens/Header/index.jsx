@@ -1,10 +1,12 @@
 import React from "react";
-import { View, AsyncStorage, Alert } from "react-native";
+import { View, Alert } from "react-native";
 import { Body, Header, Icon, Left, Right, Text } from "native-base";
+import AsyncStorage from '@react-native-community/async-storage';
+import axios from "axios";
 
 export default function HeaderComponent({ navigation }) {
   const logout = () => {
-    Alert.alert("Log Out", "Are you Sure you want to delete ?", [
+    Alert.alert("Log Out", "Are you Sure you want to logout ?", [
       {
         text: "NO",
         onPress: () => null,

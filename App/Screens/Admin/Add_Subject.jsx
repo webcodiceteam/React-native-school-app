@@ -4,7 +4,7 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  AsyncStorage,
+  
 } from "react-native";
 import { TextInput, Title, Button } from "react-native-paper";
 import axios from "axios";
@@ -14,9 +14,7 @@ export default function Add_Subject({ navigation }) {
   const [subject_name, setSubject_name] = useState("");
   const [subject_code, setSubject_code] = useState("");
 
-  const logout = () => {
-    AsyncStorage.removeItem("user").then(() => alert("success"));
-  };
+
 
   const handleSubmit = () => {
     if (subject_name == "" || subject_code == "") {

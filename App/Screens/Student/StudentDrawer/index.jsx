@@ -1,6 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../index";
+import Change from "../Change_pass";
 
 const Drawer = createDrawerNavigator();
 export default function App() {
@@ -9,6 +10,13 @@ export default function App() {
       <Drawer.Screen
         name="Home"
         component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+        <Drawer.Screen
+        name="Change Password"
+        component={Change}
         options={{
           headerShown: false,
         }}

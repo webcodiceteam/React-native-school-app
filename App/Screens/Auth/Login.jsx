@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, AsyncStorage } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { JSHash, CONSTANTS } from "react-native-hash";
 import axios from "axios";
 import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default function Login({ navigation }) {
   const [username, setUername] = useState("");
@@ -78,8 +79,10 @@ export default function Login({ navigation }) {
                 } else if (response.data["0"].role == "admin") {
                   AsyncStorage.setItem("user", response.data["0"].username);
                   navigation.navigate("Admin");
+                  
                 }
               }
+              e.target.reset();
             })
             .catch(function (error) {
               console.log(error);
@@ -131,6 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#f0f8ff",
+    
   },
   mytext: {
     fontSize: 18,
@@ -144,5 +148,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
+    fontWeight:"bold",
+    fontSize:30,
+    color:"#333",
   },
 });

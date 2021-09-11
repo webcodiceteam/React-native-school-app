@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  AsyncStorage,
   TouchableOpacity,
 } from "react-native";
 import { Body, Header, Icon, Left, Right, Button, Card } from "native-base";
@@ -12,15 +11,7 @@ import HeaderComp from "../Header";
 const Teacherscreen = ({ navigation }) => {
   const [name, setName] = useState("");
 
-  AsyncStorage.getItem("user").then((data) => {
-    // let user = data;
-    setName(data);
-  });
 
-  const logout = () => {
-    AsyncStorage.removeItem("user").then(() => alert("success"));
-    AsyncStorage.removeItem("token");
-  };
 
   return (
     <View style={styles.container}>

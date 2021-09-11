@@ -7,7 +7,6 @@ import {
   StatusBar,
   Modal,
   ScrollView,
-  AsyncStorage,
   Picker,
 } from "react-native";
 import { Body, Header, Icon, Left, Right, DatePicker } from "native-base";
@@ -56,6 +55,7 @@ export default function Add_Student({ navigation }) {
 
   const handleSubmit = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let rjks =/^[a-zA-Z]+$/;
 
     if (
       name == "" ||
@@ -98,6 +98,7 @@ export default function Add_Student({ navigation }) {
           father_name: father_name,
         })
         .then((response) => {
+          setName();
           alert(response.data);
         })
         .catch(function (error) {
@@ -124,7 +125,7 @@ export default function Add_Student({ navigation }) {
         uploadimage(newfile);
       }
     } else {
-      Alert.alert("No work");
+      alert("No work");
     }
   };
   const camerapic = async () => {
@@ -172,15 +173,17 @@ export default function Add_Student({ navigation }) {
   //     });
   // };
 
-  const logout = () => {
-    AsyncStorage.removeItem("user").then(() => alert("success"));
-  };
 
   return (
+     <ScrollView
+        showsVerticalScrollIndicator={false}
+
+
+        >
     <View style={styles.container}>
       <HeaderComp navigation={navigation} />
       <SafeAreaView style={styles.content}>
-        <ScrollView style={styles.scroll}>
+
           <Title style={styles.welcome}>Add Student👨‍🎓</Title>
           <TextInput
             style={styles.inputstyle}
@@ -191,6 +194,7 @@ export default function Add_Student({ navigation }) {
             onChangeText={(text) => setName(text)}
           />
           <TextInput
+          maxLength={5}
             style={styles.inputstyle}
             label="Father Name"
             value={father_name}
@@ -214,6 +218,7 @@ export default function Add_Student({ navigation }) {
             theme={mytheme}
             placeholder="Phone Number"
             onChangeText={(e) => setPhone_no(e)}
+            maxLength={10}
           />
 
           <TextInput
@@ -381,9 +386,11 @@ export default function Add_Student({ navigation }) {
               </Button>
             </View>
           </Modal>
-        </ScrollView>
+        
       </SafeAreaView>
     </View>
+
+    </ScrollView>
   );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, AsyncStorage } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import HeaderComp from "../Header";
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const Principalscreen = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -9,13 +11,7 @@ const Principalscreen = ({ navigation }) => {
     setName(data);
   });
 
-  const logout = () => {
-    AsyncStorage.removeItem("token");
-  };
 
-  const backAction = () => {
-    AsyncStorage.removeItem("user").then(() => console.log("success"));
-  };
 
   return (
     <View style={styles.container}>

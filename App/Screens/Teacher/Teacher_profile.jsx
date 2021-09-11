@@ -44,16 +44,21 @@ export default function teacherprofile({ navigation }) {
 
   const ProfileData = (props) => {
     return (
-      <Card style={styles.cardContrainer}>
+              <Card style={styles.cardContrainer}>
+
         <CardItem header style={{ height: 0 }}>
-          <Text>{props.Title}</Text>
+          <Text>{props.Title} </Text> 
+           
         </CardItem>
-        <CardItem>
+         <CardItem>
           <Body>
             <H3>{props.data}</H3>
           </Body>
         </CardItem>
-      </Card>
+
+              </Card>
+
+   
     );
   };
   return (
@@ -61,12 +66,13 @@ export default function teacherprofile({ navigation }) {
       <HeaderComp navigation={navigation} />
       <ScrollView>
         <View style={styles.ProfileContainer}>
-          <Avatar.Image
+        <Avatar.Image
             size={100}
             source={{
               uri: teacher.image,
             }}
           />
+        
           <ProfileData Title="Name" data={teacher.name} />
           <ProfileData Title="Email" data={teacher.email} />
           <ProfileData Title="Username" data={teacher.username} />
@@ -76,6 +82,7 @@ export default function teacherprofile({ navigation }) {
           <ProfileData Title="Class Name" data={teacher.class_name} />
           <ProfileData Title="Subject" data={teacher.subject} />
           <ProfileData Title="Qualification" data={teacher.qualification} />
+          
         </View>
       </ScrollView>
     </View>
@@ -99,5 +106,6 @@ const styles = StyleSheet.create({
   cardContrainer: {
     marginTop: "2%",
     width: "100%",
+    padding:"2%",
   },
 });

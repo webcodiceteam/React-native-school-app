@@ -11,7 +11,7 @@ export default function HomeNew({ navigation }) {
         setIsLoading(false);
         setTimeout(() => {
           navigation.navigate("Login");
-        }, 1000);
+        }, 5000);
       } else {
         navigation.navigate("Login");
       }
@@ -21,11 +21,15 @@ export default function HomeNew({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 2, justifyContent: "center", alignItems: "center" }}>
-        <Title>WELCOME TO OUR</Title>
+      <View style={styles.content}>
+        <View style={styles.border}>
+
+        <Title style={styles.welcome}>WELCOME TO OUR</Title>
         <Text style={styles.paragraph}>
-          <Text style={{ color: "#333" }}>ATTENDANCE APP</Text>
+          ATTENDANCE APP
         </Text>
+        </View>
+        
       </View>
       <View>
         <Text style={{ textAlign: "center" }}>
@@ -49,14 +53,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF",
   },
+  border:{
+    borderColor: "#333",
+    borderWidth: 1,
+    padding:20,
+    },
   welcome: {
     fontSize: 20,
     textAlign: "center",
     margin: 10,
   },
-  instructions: {
+  paragraph: {
     textAlign: "center",
     color: "#333333",
     marginBottom: 5,
+
   },
+  content:{
+   
+    flex: 2,
+    justifyContent: "center", 
+    alignItems: "center" ,
+  }
 });

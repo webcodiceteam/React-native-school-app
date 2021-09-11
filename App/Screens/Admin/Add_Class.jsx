@@ -5,7 +5,6 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  AsyncStorage,
   Picker,
 } from "react-native";
 import { TextInput, Title, Button } from "react-native-paper";

@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, AsyncStorage } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Icon } from "native-base";
 import HeaderComp from "../Header";
+// import AsyncStorage from '@react-native-community/async-storage';
 
 const Principalscreen = ({ navigation }) => {
   const [name, setName] = useState("");
 
-  AsyncStorage.getItem("user").then((data) => {
-    setName(data);
-  });
+  // AsyncStorage.getItem("user").then((data) => {
+  //   setName(data);
+  // });
 
-  const logout = () => {
-    AsyncStorage.removeItem("token");
-  };
+  // const logout = () => {
+  //   AsyncStorage.removeItem("token");
+  // };
 
-  const backAction = () => {
-    AsyncStorage.removeItem("user").then(() => console.log("success"));
-  };
+  // const backAction = () => {
+  //   AsyncStorage.removeItem("user").then(() => console.log("success"));
+  // };
 
   return (
     <View style={styles.container}>
@@ -26,6 +27,12 @@ const Principalscreen = ({ navigation }) => {
         <Text>Welcome</Text>
         <Text> {name} </Text>
       </Text>
+        <ScrollView
+        showsVerticalScrollIndicator={false}
+
+
+        >
+        <View>
 
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text
@@ -40,6 +47,11 @@ const Principalscreen = ({ navigation }) => {
           />
           &nbsp;&nbsp; Generate QR
         </Text>
+       
+      </View>
+
+       <View style={{ flexDirection: "row", margin: 10 }}>
+        
         <Text
           style={styles.textstyle}
           onPress={() => navigation.navigate("Add_Teacher")}
@@ -53,6 +65,8 @@ const Principalscreen = ({ navigation }) => {
           &nbsp;&nbsp; Add Teacher
         </Text>
       </View>
+     
+    
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text
           style={styles.textstyle}
@@ -64,8 +78,14 @@ const Principalscreen = ({ navigation }) => {
             android="md-person-add"
             style={{ fontSize: 30 }}
           />
-          &nbsp;&nbsp; Add Subject
+         &nbsp;&nbsp; Add Subject
         </Text>
+
+      </View>
+
+
+      <View style={{ flexDirection: "row", margin: 10 }}>
+       
 
         <Text
           style={styles.textstyle}
@@ -80,6 +100,7 @@ const Principalscreen = ({ navigation }) => {
           &nbsp;&nbsp; Add Student
         </Text>
       </View>
+
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text
           style={styles.textstyle}
@@ -93,6 +114,8 @@ const Principalscreen = ({ navigation }) => {
           />
           &nbsp;&nbsp; Add Class
         </Text>
+</View>
+      <View style={{ flexDirection: "row", margin: 10 }}>
 
         <Text
           style={styles.textstyle}
@@ -107,6 +130,7 @@ const Principalscreen = ({ navigation }) => {
           &nbsp;&nbsp; View Students
         </Text>
       </View>
+
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text
           style={styles.textstyle}
@@ -120,6 +144,10 @@ const Principalscreen = ({ navigation }) => {
           />
           &nbsp;&nbsp; View Class
         </Text>
+
+      </View>
+        <View style={{ flexDirection: "row", margin: 10 }}>
+       
 
         <Text
           style={styles.textstyle}
@@ -148,6 +176,11 @@ const Principalscreen = ({ navigation }) => {
           &nbsp;&nbsp; View Subjects
         </Text>
 
+       
+      </View>
+      <View style={{ flexDirection: "row", margin: 10 }}>
+      
+
         <Text
           style={styles.textstyle}
           onPress={() => navigation.navigate("View_QR")}
@@ -161,6 +194,8 @@ const Principalscreen = ({ navigation }) => {
           &nbsp;&nbsp; QR History
         </Text>
       </View>
+      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -194,11 +229,16 @@ const styles = StyleSheet.create({
   textstyle: {
     fontSize: 20,
     textAlign: "center",
-    margin: 10,
-    borderRadius: 5,
+    borderRadius: 100,
     borderColor: "#333",
     borderWidth: 1,
     padding: 8,
+    backgroundColor:"#fff",
+     shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2, 
+    width:"100%",
   },
 });
 export default Principalscreen;

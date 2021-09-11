@@ -178,7 +178,11 @@ const Add_Teacher = ({ navigation }) => {
     console.log(selectedItems);
   };
   return (
-    <ScrollView>
+    <ScrollView
+    showsVerticalScrollIndicator={false}
+
+
+    >
       <HeaderComp navigation={navigation} />
       <View style={styles.container}>
         <Title style={styles.welcome}>Add Teacher</Title>
@@ -209,6 +213,7 @@ const Add_Teacher = ({ navigation }) => {
           mode="outlined"
           onChangeText={(text) => setPhone(text)}
           theme={mytheme}
+          maxLength={10}
         />
 
         <TextInput
@@ -239,7 +244,7 @@ const Add_Teacher = ({ navigation }) => {
             mode="outlined"
             value="male"
             theme={mytheme}
-            status={gender === "Male" ? "checked" : "unchecked"}
+            status={gender === "male" ? "checked" : "unchecked"}
             onPress={() => setGender("male")}
           />
           <Text style={{ fontSize: 20, padding: 6 }}>Male</Text>
@@ -247,7 +252,7 @@ const Add_Teacher = ({ navigation }) => {
             style={styles.inputstyle}
             theme={mytheme}
             value="female"
-            status={gender === "Female" ? "checked" : "unchecked"}
+            status={gender === "female" ? "checked" : "unchecked"}
             onPress={() => setGender("female")}
           />
           <Text style={{ fontSize: 20, padding: 6 }}>Female</Text>
@@ -387,7 +392,7 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 15,
     borderRadius: 5,
-    borderColor: "grey",
+    borderColor: "black",
     borderWidth: 1,
     color: "grey",
     backgroundColor: "#f2f2f2",
@@ -434,14 +439,3 @@ const styles = StyleSheet.create({
 });
 
 export default Add_Teacher;
-
-// import React from "react";
-// import { View, Text } from "react-native";
-
-// export default function Add_Teacher() {
-//   return (
-//     <View>
-//       <Text>Teacher</Text>
-//     </View>
-//   );
-// }

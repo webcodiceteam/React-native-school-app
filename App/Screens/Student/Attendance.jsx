@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, AsyncStorage } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import HeaderComp from "../Header";
 
 const AttendanceStudent = ({ navigation }) => {
   const [name, setName] = useState("");
 
-  AsyncStorage.getItem("user").then((data) => {
-    setName(data);
-  });
-
-  const logout = () => {
-    AsyncStorage.removeItem("token");
-  };
-
-  const backAction = () => {
-    AsyncStorage.removeItem("user").then(() => console.log("success"));
-  };
-
+ 
   return (
     <View style={styles.container}>
       <HeaderComp navigation={navigation} />
